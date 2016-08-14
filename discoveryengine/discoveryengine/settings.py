@@ -176,3 +176,11 @@ STATIC_URL = '/static/'
 # Capsule Integration
 CAPSULE_ID = get_env_var("CAPSULE_ID")
 CAPSULE_API_KEY = get_env_var("CAPSULE_API_KEY")
+
+
+# ORCID Integration
+SOCIAL_AUTH_ORCID_MEMBER_KEY = get_env_var("ORCID_API_KEY")
+SOCIAL_AUTH_ORCID_MEMBER_SECRET = get_env_var("ORCID_API_SECRET")
+SOCIAL_AUTH_ORCID_MEMBER_SCOPE = ['/read-limited']
+ORCID_API_KEY = get_env_var("ORCID_API_KEY")
+ORCID_API_SECRET = get_env_var("ORCID_API_SECRET")

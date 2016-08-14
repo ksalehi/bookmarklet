@@ -8,4 +8,7 @@ from .models import *
 
 class APIManager(object):
 
-    def addPerson(Person):
+    BASE_URL = "https://%s.capsulecrm.com/api/"
+
+    def add_person(Person):
+        pass
