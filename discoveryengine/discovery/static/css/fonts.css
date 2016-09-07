@@ -1,0 +1,55 @@
+@font-face {
+    font-family: Montserrat;
+    src: url(../fonts/montserrat/Montserrat-Thin.otf);
+    font-weight: 100;
+}
+@font-face {
+    font-family: Montserrat;
+    src: url(../fonts/montserrat/Montserrat-ExtraLight.otf);
+    font-weight: 200;
+}
+@font-face {
+    font-family: Montserrat;
+    src: url(../fonts/montserrat/Montserrat-UltraLight.otf);
+    font-weight: 300;
+}
+@font-face {
+    font-family: Montserrat;
+    src: url(../fonts/montserrat/Montserrat-Light.otf);
+    font-weight: 400;
+}
+@font-face {
+    font-family: Montserrat;
+    src: url(../fonts/montserrat/Montserrat-Regular.otf);
+    font-weight: 500;
+}
+@font-face {
+    font-family: Montserrat;
+    src: url(../fonts/montserrat/Montserrat-SemiBold.otf);
+    font-weight: 600;
+}
+@font-face {
+    font-family: Montserrat;
+    src: url(../fonts/montserrat/Montserrat-Bold.otf);
+    font-weight: 700;
+}
+@font-face {
+    font-family: Montserrat;
+    src: url(../fonts/montserrat/Montserrat-ExtraBold.otf);
+    font-weight: 800;
+}
+@font-face {
+    font-family: Montserrat;
+    src: url(../fonts/montserrat/Montserrat-Black.otf);
+    font-weight: 900;
+}
+@font-face {
+    font-family: Montserrat;
+    src: url(../fonts/montserrat/Montserrat-Light.otf);
+    font-weight: normal;
+}
+@font-face {
+    font-family: Montserrat;
+    src: url(../fonts/montserrat/Montserrat-Bold.otf);
+    font-weight: bold;
+}

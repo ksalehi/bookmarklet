@@ -171,6 +171,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 # Capsule Integration
@@ -181,6 +182,6 @@ CAPSULE_API_KEY = get_env_var("CAPSULE_API_KEY")
 # ORCID Integration
 SOCIAL_AUTH_ORCID_MEMBER_KEY = get_env_var("ORCID_API_KEY")
 SOCIAL_AUTH_ORCID_MEMBER_SECRET = get_env_var("ORCID_API_SECRET")
-SOCIAL_AUTH_ORCID_MEMBER_SCOPE = ['/read-limited']
+SOCIAL_AUTH_ORCID_MEMBER_SCOPE = ['/authenticate']
 ORCID_API_KEY = get_env_var("ORCID_API_KEY")
 ORCID_API_SECRET = get_env_var("ORCID_API_SECRET")
