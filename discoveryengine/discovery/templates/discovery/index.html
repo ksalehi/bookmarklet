@@ -5,7 +5,7 @@
     <h1 style="font-size: 10rem;"><span style="font-weight: 900;">Disco?</span> Very.</h1>
     <div class-"row">
         <div class="col-md-6 col-md-offset-3">
-            <a class="btn btn-round btn-lg btn-success" href="{% url "social:begin" "orcid-member" %}">LOGIN WITH ORCID</a>
+            <a class="btn btn-round btn-lg btn-success" href="{% url "social:begin" "orcid-member" %}?next={{ request.path }}">LOGIN WITH ORCID</a>
         </div>
     </div>
 </div> <!-- /container -->
