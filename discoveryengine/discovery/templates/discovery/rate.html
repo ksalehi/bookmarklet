@@ -1,7 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container text-center">
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1><strong>The Discovery Engine</strong></h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 text-left">
+            <h3>Welcome, {{user.first_name}}.</h3>
+        </div>
+        <div class="col-md-6 text-right">
+            <a href="/logout"><h3>Logout</h3></a>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <p class="lead">Would you like to rate a paper? Let's get started.</p>
+            <p class="lead">First, input the DOI of the paper below.</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <div class="form-group">
+                    <label for="doi">DOI</label>
+                    <input id="doi" class="form-control" type="text" name="doi" placeholder="DOI" aria-describedby="doiHelpBlock" />
+                    <span id="doiHelpBlock" class="help-block">Use the DOI to search for the paper you would like to rate.</span>
+                </div>
+            </form>
+        </div>
+    </div>
     <h1 style="font-size: 10rem;"><span style="font-weight: 900;">Disco?</span> Very. RATE THIS</h1>
     <div class-"row">
         <div class="col-md-6 col-md-offset-3">
@@ -38,4 +70,8 @@
         </div>
     </div>
 </div>
+
+<script src="/static/bower_components/typeahead.js/dist/typeahead.bundle.min.js"></script>
+<script src="/static/bower_components/handlebars/handlebars.min.js "></script>
+<script src="/static/js/doi.typeahead.js"></script>
 {% endblock %}
