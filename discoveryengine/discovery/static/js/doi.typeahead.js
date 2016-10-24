@@ -1,6 +1,7 @@
 var doiBloodhound = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
+    sufficient: 1,
     remote: {
         url: 'http://api.crossref.org/works/%QUERY',
         wildcard: '%QUERY',
@@ -22,19 +23,49 @@ var doiBloodhound = new Bloodhound({
                     item.authors.push(firstName+" "+lastName);
                 }
                 item.authors = item.authors.join(', ');
-                messages[i] = item
+                item.date = moment(message.created['date-time']).format('YYYY');
+                messages[i] = item;
             }
-            console.log(messages)
             return messages;
         }
     }
 });
 
-$('#doi').typeahead(null, {
-    name: 'doi',
-    display: 'doi',
-    source: doiBloodhound,
-    templates: {
-        suggestion: Handlebars.compile('<div><strong>{{title}}</strong> - {{authors}}</div>')
+function loading(isLoading) {
+    $('#searchButton').attr('disabled', isLoading);
+}
+
+function searchByDOI() {
+    loading(true);
+    var doi = $('#doi').val();
+    if (!doi) {
+        loading(false);
+        return;
     }
-});
+    function sync(results) {
+        return;
+    }
+    function async(results) {
+        if (results.length > 0) {
+            var article = results[0];
+            $('#article-title').text(article.title);
+            $('#article-authors').text(article.authors);
+            $('#rate').css('visibility', 'visible');
+        } else {
+            $('#article-title').text("Could not locate document");
+            $('#article-authors').text("Please try again");
+            $('#rate').css('visibility', 'visible');
+        }
+        loading(false);
+    }
+    doiBloodhound.search(doi, sync, async);
+}
+
+// $('#doi').typeahead(null, {
+//     name: 'doi',
+//     display: 'doi',
+//     source: doiBloodhound,
+//     templates: {
+//         suggestion: Handlebars.compile('<div><strong>{{title}}</strong> - {{authors}}</div>')
+//     }
+// });

@@ -9,12 +9,15 @@
 		<link rel="icon" href="./img/favicon.ico">
 
 		{% include "css.html" %}
-		{% include "javascript.html" %}
-		
+
+		{% block additional_headers %}{% endblock %}
 		<title>Discovery Engine</title>
 	</head>
 	
 	<body>
 		{% block content %}{% endblock %}
+
+		{% include "javascript.html" %}
+		{% block before_closing_body %}{% endblock %}
 	</body>
 </html>

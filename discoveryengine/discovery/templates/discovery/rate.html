@@ -17,12 +17,12 @@
         </div>
     </div>
     <br />
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-md-12">
             <p class="lead">Would you like to rate a paper? Let's get started.</p>
             <p class="lead">First, input the DOI of the paper below.</p>
         </div>
-    </div>
+    </div> -->
     <div class="row">
         <div class="col-md-6">
             <form>
@@ -32,8 +32,18 @@
                     <span id="doiHelpBlock" class="help-block">Use the DOI to search for the paper you would like to rate.</span>
                 </div>
             </form>
+            <button id="searchButton" class="btn btn-primary" onclick="searchByDOI()">Search</button>
+        </div>
+        <div id="rate" class="col-md-6" style="visibility: hidden;">
+            <div class="panel panel-primary">
+                <div class="panel-body">
+                    <p id="article-title"></p>
+                    <small id="article-authors"></small>
+                </div>
+            </div>
         </div>
     </div>
+<!-- 
     <h1 style="font-size: 10rem;"><span style="font-weight: 900;">Disco?</span> Very. RATE THIS</h1>
     <div class-"row">
         <div class="col-md-6 col-md-offset-3">
@@ -68,10 +78,13 @@
             <br /><br />
             <button class="btn btn-round btn-lg btn-danger">ERROR BUTTON</button>
         </div>
-    </div>
+    </div> -->
 </div>
+{% endblock %}
 
+{% block before_closing_body %}
 <script src="/static/bower_components/typeahead.js/dist/typeahead.bundle.min.js"></script>
-<script src="/static/bower_components/handlebars/handlebars.min.js "></script>
+<script src="/static/bower_components/handlebars/handlebars.min.js"></script>
+<script src="/static/bower_components/moment/min/moment.min.js"></script>
 <script src="/static/js/doi.typeahead.js"></script>
 {% endblock %}
