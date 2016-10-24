@@ -1,3 +1,5 @@
-<script type="text/javascript" src="/static/bower_components/jquery/dist/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="/static/bower_components/jquery/dist/jquery.min.js"><\/script>')</script>
-<script src="/static/js/bootstrap.min.js"></script>
+{% load static %}
+
+<script type="text/javascript" src="{% static "js/vendor/jquery.min.js" %}"></script>
+<script>window.jQuery || document.write('<script src="{% static "js/vendor/jquery.min.js" %}"><\/script>')</script>
+<script src="{% static "js/vendor/bootstrap.min.js" %}"></script>

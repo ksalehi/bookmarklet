@@ -83,8 +83,9 @@
 {% endblock %}
 
 {% block before_closing_body %}
-<script src="/static/bower_components/typeahead.js/dist/typeahead.bundle.min.js"></script>
-<script src="/static/bower_components/handlebars/handlebars.min.js"></script>
-<script src="/static/bower_components/moment/min/moment.min.js"></script>
-<script src="/static/js/doi.typeahead.js"></script>
+{% load static %}
+<script src="{% static "js/vendor/typeahead.bundle.min.js" %}"></script>
+<script src="{% static "js/vendor/handlebars.min.js" %}"></script>
+<script src="{% static "js/vendor/moment.min.js" %}"></script>
+<script src="{% static "js/discovery/doi.typeahead.js" %}"></script>
 {% endblock %}

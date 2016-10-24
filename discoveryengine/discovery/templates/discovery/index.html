@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 
 {% block additional_headers %}
-<link href="../static/css/discovery/styles.css" rel="stylesheet" />
+{% load static %}
+<link href="{% static "css/discovery/styles.css" %}" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
