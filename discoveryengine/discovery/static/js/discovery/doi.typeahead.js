@@ -50,10 +50,12 @@ function searchByDOI() {
             var article = results[0];
             $('#article-title').text(article.title);
             $('#article-authors').text(article.authors);
+            $('#inputs').css('visibility', 'visible');
             $('#rate').css('visibility', 'visible');
         } else {
             $('#article-title').text("Could not locate document");
             $('#article-authors').text("Please try again");
+            $('#inputs').css('visibility', 'hidden');
             $('#rate').css('visibility', 'visible');
         }
         loading(false);
