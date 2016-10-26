@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
 
+{% block additional_headers %}
+{% load static %}
+<link href="{% static "css/discovery/styles.css" %}" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
 <div class="container">
     <div class="row">
@@ -42,29 +47,33 @@
                 </div>
             </div>
             <div id="inputs">
-                <div class="form-group">
-                    <label for="discovery-value">Discovery Value</label>
-                    <input id="discovery-value" class="form-control" type="range" name="discovery-value" min=0 max=5 aria-describedby="dvHelp" />
+                <div class="form-group rate-slider off">
+                    <label for="dv-slider">Discovery Value</label>
+                    <input id="dv-slider" class="form-control" type="range" name="dv-slider" min=0 max=500 aria-describedby="dvHelp" oninput="dvRangeUpdated()" onchange="dvRangeUpdated()" />
                     <span id="dvHelp" class="help-block">How much could the conclusions and/or findings of this paper change your view(s) if proven true? (see question 3 below for a rating of certitude)</span>
                 </div>
                 <hr />
-                <div class="form-group">
-                    <label for="discovery-value">Accountability</label>
-                    <input id="discovery-value" class="form-control" type="range" name="discovery-value" min=0 max=5 aria-describedby="dvHelp" />
-                    <span id="dvHelp" class="help-block">How much will this paper change practice in the field?</span>
+                <div class="form-group rate-slider off">
+                    <label for="ac-slider">Accountability</label>
+                    <input id="ac-slider" class="form-control" type="range" name="ac-slider" min=0 max=500 aria-describedby="acHelp" oninput="acRangeUpdated(value)" onchange="acRangeUpdated(value)" />
+                    <span id="acHelp" class="help-block">How much will this paper change practice in the field?</span>
                 </div>
                 <hr />
-                <div class="form-group">
-                    <label for="discovery-value">Concreteness</label>
-                    <input id="discovery-value" class="form-control" type="range" name="discovery-value" min=0 max=5 aria-describedby="dvHelp" />
-                    <span id="dvHelp" class="help-block">How well proven is the finding you rated for Discovery Value?</span>
+                <div class="form-group rate-slider off">
+                    <label for="cr-slider">Concreteness</label>
+                    <input id="cr-slider" class="form-control" type="range" name="cr-slider" min=0 max=500 aria-describedby="crHelp" oninput="crRangeUpdated(value)" onchange="crRangeUpdated(value)" />
+                    <span id="crHelp" class="help-block">How well proven is the finding you rated for Discovery Value?</span>
                 </div>
                 <hr />
-                <div class="form-group">
-                    <label for="discovery-value">Knowledge Base</label>
-                    <input id="discovery-value" class="form-control" type="range" name="discovery-value" min=0 max=5 aria-describedby="dvHelp" />
-                    <span id="dvHelp" class="help-block">How familiar are you with the topic are of this paper?</span>
+                <div class="form-group rate-slider off">
+                    <label for="ex-slider">Expertise</label>
+                    <input id="ex-slider" class="form-control" type="range" name="ex-slider" min=0 max=500 aria-describedby="exHelp" oninput="exRangeUpdated(value)" onchange="exRangeUpdated(value)" />
+                    <span id="exHelp" class="help-block">How familiar are you with the topic are of this paper?</span>
                 </div>
+                <div id="allInputError" class="alert alert-danger" style="display: none;">
+                    <p class="lead">Please select a value for all the questions.</p>
+                </div>
+                <button class="btn btn-danger btn-block" onclick="submitRating()">Submit Rating</button>
             </div>
         </div>
     </div>

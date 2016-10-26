@@ -1,3 +1,9 @@
+var rating = {};
+var dvSelected = false;
+var acSelected = false;
+var crSelected = false;
+var exSelected = false;
+
 var doiBloodhound = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -14,6 +20,7 @@ var doiBloodhound = new Bloodhound({
             for (i=0; i<messages.length; i++) {
                 var message = messages[i];
                 var item = {};
+                rating.doi = message.DOI
                 item.doi = message.DOI
                 item.title = message.title[0];
                 item.authors = [];
@@ -63,11 +70,31 @@ function searchByDOI() {
     doiBloodhound.search(doi, sync, async);
 }
 
-// $('#doi').typeahead(null, {
-//     name: 'doi',
-//     display: 'doi',
-//     source: doiBloodhound,
-//     templates: {
-//         suggestion: Handlebars.compile('<div><strong>{{title}}</strong> - {{authors}}</div>')
-//     }
-// });
+function dvRangeUpdated(value) {
+    dvSelected = true;
+    var slider = $('#dv-slider');
+    rating.dv = slider.val()
+}
+function acRangeUpdated(value) {
+    acSelected = true;
+    var slider = $('#ac-slider');
+    rating.ac = slider.val()
+}
+function crRangeUpdated(value) {
+    crSelected = true;
+    var slider = $('#cr-slider');
+    rating.cr = slider.val()
+}
+function exRangeUpdated(value) {
+    exSelected = true;
+    var slider = $('#ex-slider');
+    rating.ex = slider.val()
+}
+
+function submitRating() {
+    $('#allInputError').hide();
+    console.log(rating);
+    if (!(dvSelected && acSelected && crSelected && exSelected)) {
+        $('#allInputError').show();
+    }
+}
