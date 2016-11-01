@@ -43,7 +43,7 @@ class Manuscript(models.Model):
     doi = models.CharField(max_length=200)
 
     def __unicode__(self):
-        return doi
+        return self.doi
 
 class Rating(models.Model):
     user = models.ForeignKey(User)

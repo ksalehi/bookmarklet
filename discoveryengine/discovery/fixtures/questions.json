@@ -1,0 +1,42 @@
+[  
+    {  
+        "model":"discovery.question",
+        "pk":1,
+        "fields":{  
+            "question_text":"How much could the conclusions and/or findings of this paper change your view(s) if proven true?",
+            "help_text":"See question 3 below for a rating of certitude",
+            "category":"DV",
+            "question_type":"SL"
+        }
+    },
+    {  
+        "model":"discovery.question",
+        "pk":2,
+        "fields":{  
+            "question_text":"How much will this paper change practice in the field?",
+            "help_text":"Actionability, the impact the paper has on the field. The \"field\" we define broadly to mean either scientific practice, or real-world applications.  A change in methods used in a branch of scientific research or a new disease treatment would receive high Actionability ratings.",
+            "category":"AC",
+            "question_type":"SL"
+        }
+    },
+    {  
+        "model":"discovery.question",
+        "pk":3,
+        "fields":{  
+            "question_text":"How well proven is the finding you rated for Discovery Value?",
+            "help_text":"Rate how much you think the main conclusions of the paper are concrete - how much they have really been proven.  The fourth (IV) question lets you rate your expertise on the topic.",
+            "category":"CR",
+            "question_type":"SL"
+        }
+    },
+    {  
+        "model":"discovery.question",
+        "pk":4,
+        "fields":{  
+            "question_text":"How familiar are you with the topic are of this paper?",
+            "help_text":"Rate your expertise on the topic.",
+            "category":"EX",
+            "question_type":"SL"
+        }
+    }
+]

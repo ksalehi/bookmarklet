@@ -1,0 +1,11 @@
+[  
+    {  
+        "model":"widget.version",
+        "pk":1,
+        "fields":{  
+            "major":0,
+            "minor":0,
+            "patch":0
+        }
+    }
+]

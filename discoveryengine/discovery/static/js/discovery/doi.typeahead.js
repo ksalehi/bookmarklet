@@ -1,3 +1,19 @@
+/*******************
+**** SETUP AJAX ****
+*******************/
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            var csrftoken = Cookies.get('csrftoken');
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
+
 var rating = {};
 var dvSelected = false;
 var acSelected = false;
@@ -96,5 +112,10 @@ function submitRating() {
     console.log(rating);
     if (!(dvSelected && acSelected && crSelected && exSelected)) {
         $('#allInputError').show();
+        return;
     }
+
+    $.post('/api/discovery/ratings/', rating).then(function(data) {
+        console.log(data);
+    });
 }
