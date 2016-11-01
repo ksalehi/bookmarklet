@@ -72,6 +72,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'djsupervisor',
     'social.apps.django_app.default',
     'rest_framework',
     'auth_disco',
