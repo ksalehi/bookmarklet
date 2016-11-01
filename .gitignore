@@ -90,3 +90,7 @@ ENV/
 
 # Mac Stores
 *.DS_Store
+
+# Sass Cache
+.sass_cache/
+
