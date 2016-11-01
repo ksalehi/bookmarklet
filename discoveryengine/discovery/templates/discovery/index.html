@@ -24,7 +24,11 @@
                     </div>
                 </div>
                 <br />
+                {% if ENVIRONMENT == PRODUCTION %}
                 <a class="btn btn-round btn-lg btn-success" href="{% url "social:begin" "orcid-member" %}?next={{ request.path }}">LOGIN WITH ORCID</a>
+                {% else %}
+                <a class="btn btn-round btn-lg btn-success" href="{% url "social:begin" "orcid-sandbox-member" %}?next={{ request.path }}">LOGIN WITH ORCID</a>
+                {% endif %}
             </div>
         </div>
     </div> <!-- /container -->

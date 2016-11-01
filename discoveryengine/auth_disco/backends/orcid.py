@@ -4,7 +4,7 @@ from xml.etree import ElementTree
 
 class ORCIDOAuth2(BaseOAuth2):
     """ORCID OAuth2 authentication backend"""
-    AUTHORIZATION_URL = 'https://sandbox.orcid.org/oauth/authorize'
+    AUTHORIZATION_URL = 'https://orcid.org/oauth/authorize'
     SCOPE_SEPARATOR = ''
     ACCESS_TOKEN_METHOD = 'POST'
     ID_KEY = 'orcid'
@@ -76,16 +76,36 @@ class ORCIDOAuth2(BaseOAuth2):
             'email': email,
         }
 
-
 class ORCIDPublicOAuth2(ORCIDOAuth2):
     """ORCID OAuth2 authentication backend for Public API"""
     name = 'orcid-public'
-    ACCESS_TOKEN_URL = 'https://sandbox.orcid.org/oauth/token'
-    API_URL = 'https://pub.sandbox.orcid.org/v1.2/'
+    ACCESS_TOKEN_URL = 'https://orcid.org/oauth/token'
+    API_URL = 'https://pub.orcid.org/v1.2/'
 
 
 class ORCIDMemberOAuth2(ORCIDOAuth2):
     """ORCID OAuth2 authentication backend for Member API"""
     name = 'orcid-member'
+    ACCESS_TOKEN_URL = 'https://orcid.org/oauth/token'
+    API_URL = 'https://api.orcid.org/v1.2/'
+
+
+################################################################
+################ ORCID SANDBOX OAUTH2 BACKENDS #################
+################################################################
+class ORCIDSandboxOAuth2(ORCIDOAuth2):
+    """ORCID OAuth2 authentication backend"""
+    AUTHORIZATION_URL = 'https://sandbox.orcid.org/oauth/authorize'
+
+class ORCIDSandboxPublicOAuth2(ORCIDSandboxOAuth2):
+    """ORCID OAuth2 authentication backend for Public API"""
+    name = 'orcid-sandbox-public'
+    ACCESS_TOKEN_URL = 'https://sandbox.orcid.org/oauth/token'
+    API_URL = 'https://pub.sandbox.orcid.org/v1.2/'
+
+
+class ORCIDSandboxMemberOAuth2(ORCIDSandboxOAuth2):
+    """ORCID OAuth2 authentication backend for Member API"""
+    name = 'orcid-sandbox-member'
     ACCESS_TOKEN_URL = 'https://sandbox.orcid.org/oauth/token'
     API_URL = 'https://api.sandbox.orcid.org/v1.2/'

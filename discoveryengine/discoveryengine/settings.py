@@ -57,10 +57,26 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = get_env_var("DJANGO_SECRET_KEY")
 
+# GET ENVIRONMENT TYPE
+STAGING = "STAGING"
+PRODUCTION = "PRODUCTION"
+ENVIRONMENT = STAGING
+if get_env_var("ENVIRONMENT", STAGING) == PRODUCTION:
+    ENVIRONMENT = PRODUCTION
+
+print "klasdjflakjsdflkajsdflkajsdflkajsdlfaslkjdflkasjdflkajdflkajsldkfajslkf"
+print ENVIRONMENT
+
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = ENVIRONMENT != PRODUCTION
 
 ALLOWED_HOSTS = []
+
+if ENVIRONMENT == PRODUCTION:
+    ALLOWED_HOSTS.append('rate.thediscoveryengine.org')
+else:
+    ALLOWED_HOSTS.append('localhost:8000')
+    ALLOWED_HOSTS.append('staging.thediscoveryengine.org')
 
 
 # Application definition
@@ -148,10 +164,13 @@ AUTH_PASSWORD_VALIDATORS = [
 # Social authentication
 # http://psa.matiasaguirre.net/docs/configuration/django.html
 
-AUTHENTICATION_BACKENDS = [
-    'auth_disco.backends.orcid.ORCIDMemberOAuth2',
-    'django.contrib.auth.backends.ModelBackend',
-]
+AUTHENTICATION_BACKENDS = []
+if ENVIRONMENT==PRODUCTION:
+    AUTHENTICATION_BACKENDS.append('auth_disco.backends.orcid.ORCIDMemberOAuth2')
+else:
+    AUTHENTICATION_BACKENDS.append('auth_disco.backends.orcid.ORCIDSandboxMemberOAuth2')
+
+AUTHENTICATION_BACKENDS.append('django.contrib.auth.backends.ModelBackend')
 
 SOCIAL_AUTH_PIPELINE = (
     # Get the information we can about the user and return it in a simple
@@ -228,6 +247,8 @@ CAPSULE_API_KEY = get_env_var("CAPSULE_API_KEY")
 # ORCID Integration
 SOCIAL_AUTH_ORCID_MEMBER_KEY = get_env_var("ORCID_API_KEY")
 SOCIAL_AUTH_ORCID_MEMBER_SECRET = get_env_var("ORCID_API_SECRET")
+SOCIAL_AUTH_ORCID_SANDBOX_MEMBER_KEY = get_env_var("ORCID_API_KEY")
+SOCIAL_AUTH_ORCID_SANDBOX_MEMBER_SECRET = get_env_var("ORCID_API_SECRET")
 SOCIAL_AUTH_ORCID_MEMBER_SCOPE = ['/orcid-bio', '/update']
 ORCID_API_KEY = get_env_var("ORCID_API_KEY")
 ORCID_API_SECRET = get_env_var("ORCID_API_SECRET")
