@@ -57,14 +57,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = get_env_var("DJANGO_SECRET_KEY")
 
-# GET ENVIRONMENT TYPE
+# IS THE ENVIRONMENT PRODUCTION
 IS_PRODUCTION = get_env_var("IS_PRODUCTION", False)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = not IS_PRODUCTION
 
 ALLOWED_HOSTS = []
-
 if IS_PRODUCTION:
     ALLOWED_HOSTS.append('rate.thediscoveryengine.org')
 else:

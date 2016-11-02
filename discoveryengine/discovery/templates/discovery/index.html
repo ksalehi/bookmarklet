@@ -24,12 +24,6 @@
                     </div>
                 </div>
                 <br />
-                {{IS_PRODUCTION}}
-                {% if IS_PRODUCTION %}
-                <h1>aksldjflkasjdlfkjaslkdfj</h1>
-                {% else %}
-                <h1>STAGING</h1>
-                {% endif %}
                 {% if IS_PRODUCTION %}
                 <a class="btn btn-round btn-lg btn-success" href="{% url "social:begin" "orcid-member" %}?next={{ request.path }}">LOGIN WITH ORCID</a>
                 {% else %}
