@@ -39,7 +39,7 @@ def get_env_var(var_name, default=None):
 
     try:
         value = process_var_value(os.environ[var_name])
-    except KeyError:
+    except KeyError, e:
         pass
 
     if value == None:
@@ -58,24 +58,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = get_env_var("DJANGO_SECRET_KEY")
 
 # GET ENVIRONMENT TYPE
-STAGING = "STAGING"
-PRODUCTION = "PRODUCTION"
-ENVIRONMENT = STAGING
-if get_env_var("ENVIRONMENT", STAGING) == PRODUCTION:
-    ENVIRONMENT = PRODUCTION
-
-print "klasdjflakjsdflkajsdflkajsdflkajsdlfaslkjdflkasjdflkajdflkajsldkfajslkf"
-print ENVIRONMENT
+IS_PRODUCTION = get_env_var("IS_PRODUCTION", False)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = ENVIRONMENT != PRODUCTION
+DEBUG = not IS_PRODUCTION
 
 ALLOWED_HOSTS = []
 
-if ENVIRONMENT == PRODUCTION:
+if IS_PRODUCTION:
     ALLOWED_HOSTS.append('rate.thediscoveryengine.org')
 else:
-    ALLOWED_HOSTS.append('localhost:8000')
+    ALLOWED_HOSTS.append('localhost')
     ALLOWED_HOSTS.append('staging.thediscoveryengine.org')
 
 
@@ -165,7 +158,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # http://psa.matiasaguirre.net/docs/configuration/django.html
 
 AUTHENTICATION_BACKENDS = []
-if ENVIRONMENT==PRODUCTION:
+if IS_PRODUCTION:
     AUTHENTICATION_BACKENDS.append('auth_disco.backends.orcid.ORCIDMemberOAuth2')
 else:
     AUTHENTICATION_BACKENDS.append('auth_disco.backends.orcid.ORCIDSandboxMemberOAuth2')
