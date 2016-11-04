@@ -28,8 +28,6 @@ class ORCIDOAuth2(BaseOAuth2):
 
     def get_user_details(self, response):
         """Return user details from ORCID account"""
-        print "GET_USER_DETAILS"
-        print response
         return {
             'username': response.get('orcid'),
             'first_name': response.get('first_name'),
@@ -39,7 +37,6 @@ class ORCIDOAuth2(BaseOAuth2):
 
     def user_data(self, access_token, *args, **kwargs):
         """Loads user data from service"""
-        print "USER_DATA"
         orcid = kwargs.get('response').get('orcid')
         url = self.API_URL + orcid
         headers = {'Authorization': 'Bearer ' + access_token}
@@ -61,8 +58,12 @@ class ORCIDOAuth2(BaseOAuth2):
 
         # Personal details
         details = bio.find('ns0:personal-details', namespaces)
-        first_name = details.find('ns0:given-names', namespaces).text
-        last_name = details.find('ns0:family-name', namespaces).text
+        first_name = details.find('ns0:given-names', namespaces)
+        if first_name:
+            first_name = first_name.text
+        last_name = details.find('ns0:family-name', namespaces)
+        if last_name:
+            last_name = last_name.text
 
         # Contact information
         contact = bio.find('ns0:contact-details', namespaces)
