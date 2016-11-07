@@ -69,8 +69,10 @@ class ORCIDOAuth2(BaseOAuth2):
         # Contact information
         contact = bio.find('ns0:contact-details', namespaces)
         email = None
-        if contact:
-            email = contact.find('ns0:email', namespaces).text
+        if contact is not None:
+            emailXML = contact.find('ns0:email', namespaces)
+            if emailXML is not None:
+                email = contact.find('ns0:email', namespaces).text
 
         return {
             'first_name': first_name, 
