@@ -1071,8 +1071,8 @@ body {
   font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857;
-  color: #eeeeee;
-  background-color: #163158; }
+  color: #333333;
+  background-color: #eeeeee; }
 
 input,
 button,
@@ -1109,7 +1109,7 @@ img {
 .img-thumbnail {
   padding: 4px;
   line-height: 1.42857;
-  background-color: #163158;
+  background-color: #eeeeee;
   border: 1px solid #ddd;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -2218,7 +2218,7 @@ th {
   .table > tbody + tbody {
     border-top: 2px solid #ddd; }
   .table .table {
-    background-color: #163158; }
+    background-color: #eeeeee; }
 
 .table-condensed > thead > tr > th,
 .table-condensed > thead > tr > td,
@@ -2794,7 +2794,7 @@ select[multiple].input-lg,
   display: block;
   margin-top: 5px;
   margin-bottom: 10px;
-  color: white; }
+  color: #737373; }
 
 @media (min-width: 768px) {
   .form-inline .form-group {
@@ -3084,33 +3084,33 @@ a.btn.disabled, fieldset[disabled] a.btn {
     background-color: #fff; }
 
 .btn-transparent {
-  color: #eeeeee;
+  color: #333333;
   background-color: transparent;
-  border-color: #eeeeee; }
+  border-color: #333333; }
   .btn-transparent:focus, .btn-transparent.focus {
-    color: #eeeeee;
+    color: #333333;
     background-color: transparent;
-    border-color: #afafaf; }
+    border-color: black; }
   .btn-transparent:hover {
-    color: #eeeeee;
+    color: #333333;
     background-color: transparent;
-    border-color: #d0d0d0; }
+    border-color: #141414; }
   .btn-transparent:active, .btn-transparent.active, .open > .btn-transparent.dropdown-toggle {
-    color: #eeeeee;
+    color: #333333;
     background-color: transparent;
-    border-color: #d0d0d0; }
+    border-color: #141414; }
     .btn-transparent:active:hover, .btn-transparent:active:focus, .btn-transparent:active.focus, .btn-transparent.active:hover, .btn-transparent.active:focus, .btn-transparent.active.focus, .open > .btn-transparent.dropdown-toggle:hover, .open > .btn-transparent.dropdown-toggle:focus, .open > .btn-transparent.dropdown-toggle.focus {
-      color: #eeeeee;
+      color: #333333;
       background-color: transparent;
-      border-color: #afafaf; }
+      border-color: black; }
   .btn-transparent:active, .btn-transparent.active, .open > .btn-transparent.dropdown-toggle {
     background-image: none; }
   .btn-transparent.disabled:hover, .btn-transparent.disabled:focus, .btn-transparent.disabled.focus, .btn-transparent[disabled]:hover, .btn-transparent[disabled]:focus, .btn-transparent[disabled].focus, fieldset[disabled] .btn-transparent:hover, fieldset[disabled] .btn-transparent:focus, fieldset[disabled] .btn-transparent.focus {
     background-color: transparent;
-    border-color: #eeeeee; }
+    border-color: #333333; }
   .btn-transparent .badge {
     color: transparent;
-    background-color: #eeeeee; }
+    background-color: #333333; }
 
 .btn-link {
   color: #6249EE;
@@ -3638,7 +3638,7 @@ tbody.collapse.in {
         border-color: #eeeeee #eeeeee #ddd; }
     .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
       color: #555555;
-      background-color: #163158;
+      background-color: #eeeeee;
       border: 1px solid #ddd;
       border-bottom-color: transparent;
       cursor: default; }
@@ -3696,7 +3696,7 @@ tbody.collapse.in {
     .nav-tabs.nav-justified > .active > a:hover,
     .nav-tabs-justified > .active > a:focus,
     .nav-tabs.nav-justified > .active > a:focus {
-      border-bottom-color: #163158; } }
+      border-bottom-color: #eeeeee; } }
 
 .tab-content > .tab-pane {
   display: none; }
@@ -4359,7 +4359,7 @@ a.badge:hover, a.badge:focus {
   padding: 4px;
   margin-bottom: 20px;
   line-height: 1.42857;
-  background-color: #163158;
+  background-color: #eeeeee;
   border: 1px solid #ddd;
   border-radius: 4px;
   -webkit-transition: border 0.2s ease-in-out;
@@ -4374,7 +4374,7 @@ a.badge:hover, a.badge:focus {
     margin-right: auto; }
   .thumbnail .caption {
     padding: 9px;
-    color: #eeeeee; }
+    color: #333333; }
 
 a.thumbnail:hover,
 a.thumbnail:focus,
@@ -5838,5 +5838,29 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important; } }
+/*!
+ * The Discovery Engine (http://thediscoveryengine.org)
+ * Copyright 2016 The Discovery Engine
+ */
+.background-default {
+  background-color: #eeeeee; }
+
+.background-primary {
+  background-color: #408DFF; }
+
+.background-success {
+  background-color: #39FF8D; }
+
+.background-info {
+  background-color: #6249EE; }
+
+.background-warning {
+  background-color: #FF9F1C; }
+
+.background-danger {
+  background-color: #FF3366; }
+
+.background-primary-dark {
+  background-color: #163158; }
 
 /*# sourceMappingURL=bootstrap.css.map */

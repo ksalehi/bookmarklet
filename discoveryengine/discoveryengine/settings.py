@@ -83,6 +83,7 @@ INSTALLED_APPS = [
     'djsupervisor',
     'social.apps.django_app.default',
     'rest_framework',
+    'discoveryengine',
     'auth_disco',
     'discovery',
     'widget',

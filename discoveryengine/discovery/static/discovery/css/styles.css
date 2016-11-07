@@ -1,0 +1,22 @@
+.text-white {
+    color: white;
+}
+
+/*.rate-slider.off input[type='range']::-webkit-slider-thumb {
+    display: none;
+}
+.rate-slider.off input[type='range']::-moz-range-thumb {
+    display: none;
+}
+.rate-slider.off input[type='range']::slider-thumb {
+    display: none;
+}*/
+.rate-slider.on input[type='range']::-webkit-slider-thumb {
+    display: block;
+}
+.rate-slider.on input[type='range']::-moz-range-thumb {
+    display: block;
+}
+.rate-slider.on input[type='range']::slider-thumb {
+    display: block;
+}

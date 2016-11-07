@@ -4,4 +4,5 @@ from django.conf.urls import url, include
 
 urlpatterns = [
    url(r'^discovery/', include('discovery.api.urls')),
+   url(r'^auth/', include('auth_disco.api.urls')),
 ]

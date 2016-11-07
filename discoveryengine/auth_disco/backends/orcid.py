@@ -49,6 +49,7 @@ class ORCIDOAuth2(BaseOAuth2):
             return None
 
     def _user_data_from_XML(self, xml_string):
+        """Parses user data from ORCID XML"""
         namespaces = {
             'ns0': 'http://www.orcid.org/ns/orcid',
         }
@@ -59,10 +60,10 @@ class ORCIDOAuth2(BaseOAuth2):
         # Personal details
         details = bio.find('ns0:personal-details', namespaces)
         first_name = details.find('ns0:given-names', namespaces)
-        if first_name:
+        if first_name is not None:
             first_name = first_name.text
         last_name = details.find('ns0:family-name', namespaces)
-        if last_name:
+        if last_name is not None:
             last_name = last_name.text
 
         # Contact information
@@ -95,18 +96,18 @@ class ORCIDMemberOAuth2(ORCIDOAuth2):
 ################ ORCID SANDBOX OAUTH2 BACKENDS #################
 ################################################################
 class ORCIDSandboxOAuth2(ORCIDOAuth2):
-    """ORCID OAuth2 authentication backend"""
+    """ORCID Sandbox OAuth2 authentication backend"""
     AUTHORIZATION_URL = 'https://sandbox.orcid.org/oauth/authorize'
 
 class ORCIDSandboxPublicOAuth2(ORCIDSandboxOAuth2):
-    """ORCID OAuth2 authentication backend for Public API"""
+    """ORCID Sandbox OAuth2 authentication backend for Public API"""
     name = 'orcid-sandbox-public'
     ACCESS_TOKEN_URL = 'https://sandbox.orcid.org/oauth/token'
     API_URL = 'https://pub.sandbox.orcid.org/v1.2/'
 
 
 class ORCIDSandboxMemberOAuth2(ORCIDSandboxOAuth2):
-    """ORCID OAuth2 authentication backend for Member API"""
+    """ORCID Sandbox OAuth2 authentication backend for Member API"""
     name = 'orcid-sandbox-member'
     ACCESS_TOKEN_URL = 'https://sandbox.orcid.org/oauth/token'
     API_URL = 'https://api.sandbox.orcid.org/v1.2/'
