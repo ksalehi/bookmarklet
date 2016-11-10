@@ -40,70 +40,75 @@
             <button id="searchButton" class="btn btn-primary" onclick="searchByDOI()">Search</button>
         </div>
         <div id="rate" class="col-md-6" style="visibility: hidden;">
-            <div class="panel panel-primary">
+            <div class="panel text-white background-primary">
                 <div class="panel-body">
-                    <p id="article-title"></p>
-                    <small id="article-authors"></small>
+                    <p class="lead" id="article-title"></p>
+                    <p id="article-authors"></p>
                 </div>
             </div>
             <div id="inputs">
-                <div class="form-group rate-slider off">
-                    <label for="dv-slider">Discovery Value</label>
-                    <span id="dvHelp" class="help-block">How much could the conclusions and/or findings of this paper change your view(s) if proven true? (see question 3 below for a rating of certitude)</span>
-                    <input id="dv-slider" class="form-control" type="range" name="dv-slider" min=0 max=500 aria-describedby="dvHelp" oninput="dvRangeUpdated()" onchange="dvRangeUpdated()" />
-                    <table width="100%" style="table-layout: fixed;">
-                        <tbody>
-                            <tr>
-                                <td class="text-right">Less than average</td>
-                                <td class="text-center">Typical</td>
-                                <td class="text-right">Best Ever</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="form-group panel background-default">
+                    <div class="panel-body">
+                        <label for="dv-slider">Discovery Value</label>
+                        <span id="dvHelp" class="help-block">How much could the conclusions and/or findings of this paper change your view(s) if proven true? (see question 3 below for a rating of certitude)</span>
+                        <input id="dv-slider" class="form-control" type="range" name="dv-slider" min=0 max=500 aria-describedby="dvHelp" oninput="dvRangeUpdated()" onchange="dvRangeUpdated()" />
+                        <table width="100%" style="table-layout: fixed;">
+                            <tbody>
+                                <tr>
+                                    <td class="text-right">Less than average</td>
+                                    <td class="text-center">Typical</td>
+                                    <td class="text-right">Best Ever</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <hr />
-                <div class="form-group rate-slider off">
-                    <label for="ac-slider">Accountability</label>
-                    <span id="acHelp" class="help-block">How much will this paper change practice in the field?</span>
-                    <input id="ac-slider" class="form-control" type="range" name="ac-slider" min=0 max=500 aria-describedby="acHelp" oninput="acRangeUpdated(value)" onchange="acRangeUpdated(value)" />
-                    <table width="100%" style="table-layout: fixed;">
-                        <tbody>
-                            <tr>
-                                <td class="text-right">Less than average</td>
-                                <td class="text-center">Typical</td>
-                                <td class="text-right">Best Ever</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="form-group panel background-default">
+                    <div class="panel-body">
+                        <label for="ac-slider">Accountability</label>
+                        <span id="acHelp" class="help-block">How much will this paper change practice in the field?</span>
+                        <input id="ac-slider" class="form-control" type="range" name="ac-slider" min=0 max=500 aria-describedby="acHelp" oninput="acRangeUpdated(value)" onchange="acRangeUpdated(value)" />
+                        <table width="100%" style="table-layout: fixed;">
+                            <tbody>
+                                <tr>
+                                    <td class="text-right">Less than average</td>
+                                    <td class="text-center">Typical</td>
+                                    <td class="text-right">Best Ever</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <hr />
-                <div class="form-group rate-slider off">
-                    <label for="cr-slider">Concreteness</label>
-                    <span id="crHelp" class="help-block">How well proven is the finding you rated for Discovery Value?</span>
-                    <input id="cr-slider" class="form-control" type="range" name="cr-slider" min=0 max=500 aria-describedby="crHelp" oninput="crRangeUpdated(value)" onchange="crRangeUpdated(value)" />
-                    <table width="100%" style="table-layout: fixed;">
-                        <tbody>
-                            <tr>
-                                <td class="text-right">Less than average</td>
-                                <td class="text-center">Typical</td>
-                                <td class="text-right">Best Ever</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="form-group panel background-default">
+                    <div class="panel-body">
+                        <label for="cr-slider">Concreteness</label>
+                        <span id="crHelp" class="help-block">How well proven is the finding you rated for Discovery Value?</span>
+                        <input id="cr-slider" class="form-control" type="range" name="cr-slider" min=0 max=500 aria-describedby="crHelp" oninput="crRangeUpdated(value)" onchange="crRangeUpdated(value)" />
+                        <table width="100%" style="table-layout: fixed;">
+                            <tbody>
+                                <tr>
+                                    <td class="text-right">Less than average</td>
+                                    <td class="text-center">Typical</td>
+                                    <td class="text-right">Best Ever</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <hr />
-                <div class="form-group rate-slider off">
-                    <label for="ex-slider">Expertise</label>
-                    <span id="exHelp" class="help-block">How familiar are you with the topic area of this paper?</span>
-                    <input id="ex-slider" class="form-control" type="range" name="ex-slider" min=0 max=500 aria-describedby="exHelp" oninput="exRangeUpdated(value)" onchange="exRangeUpdated(value)" />
-                    <table width="100%" style="table-layout: fixed;">
-                        <tbody>
-                            <tr>
-                                <td class="text-left">Novice</td>
-                                <td class="text-right">Expert</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="form-group panel background-default">
+                    <div class="panel-body">
+                        <label for="ex-slider">Expertise</label>
+                        <span id="exHelp" class="help-block">How familiar are you with the topic area of this paper?</span>
+                        <input id="ex-slider" class="form-control" type="range" name="ex-slider" min=0 max=500 aria-describedby="exHelp" oninput="exRangeUpdated(value)" onchange="exRangeUpdated(value)" />
+                        <table width="100%" style="table-layout: fixed;">
+                            <tbody>
+                                <tr>
+                                    <td class="text-left">Novice</td>
+                                    <td class="text-right">Expert</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div id="allInputError" class="alert alert-danger" style="display: none;">
                     <p class="lead">Please select a value for all the questions.</p>

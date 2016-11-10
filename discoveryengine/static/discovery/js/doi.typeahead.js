@@ -33,7 +33,7 @@ function resetRating() {
     $('#ex-slider').val($("#ex-slider").attr("max")/2);
 
     $('#allInputError').hide();
-    // $('#ratingSubmitted').hide();
+    $('#ratingSubmitted').hide();
     $('#errorSubmitting').hide();
 }
 
