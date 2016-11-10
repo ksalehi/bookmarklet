@@ -502,8 +502,8 @@ $jumbotron-heading-font-size:    ceil(($font-size-base * 4.5)) !default;
 //
 //## Define colors for form feedback states and, by default, alerts.
 
-$state-success-text:             #39FF8D !default;
-$state-success-bg:               #d3ffe5 !default;
+$state-success-text:             #2ecc71 !default;
+$state-success-bg:               #74FBAD !default;
 $state-success-border:           darken(adjust-hue($state-success-bg, -10), 5%) !default;
 
 $state-info-text:                #6249EE !default;
