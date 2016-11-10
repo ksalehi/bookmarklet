@@ -22,22 +22,20 @@
         </div>
     </div>
     <br />
-    <!-- <div class="row">
-        <div class="col-md-12">
-            <p class="lead">Would you like to rate a paper? Let's get started.</p>
-            <p class="lead">First, input the DOI of the paper below.</p>
-        </div>
-    </div> -->
     <div class="row">
         <div class="col-md-6">
-            <form>
+            <form action="#" onsubmit="searchByDOI(); return false;">
                 <div class="form-group">
-                    <label for="doi">DOI</label>
-                    <input id="doi" class="form-control" type="text" name="doi" placeholder="DOI" aria-describedby="doiHelpBlock" />
+                    <div class="input-group">
+                        <span class="input-group-addon" id="doi-addon">DOI:</span>
+                        <input id="doi" class="form-control" type="text" name="doi" placeholder="example: 10.3389/fnsys.2013.00008" aria-describedby="doiHelpBlock" />
+                        <span class="input-group-btn">
+                            <button id="searchButton" class="btn btn-primary" onclick="searchByDOI()" type="button">Search</button>
+                        </span>
+                    </div>
                     <span id="doiHelpBlock" class="help-block">Use the DOI to search for the paper you would like to rate.</span>
                 </div>
             </form>
-            <button id="searchButton" class="btn btn-primary" onclick="searchByDOI()">Search</button>
         </div>
         <div id="rate" class="col-md-6" style="visibility: hidden;">
             <div class="panel text-white background-primary">
