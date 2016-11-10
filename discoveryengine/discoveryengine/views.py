@@ -1,5 +1,6 @@
 from django.conf import settings
-from django.shortcuts import render
+from django.contrib.auth import logout as lo
+from django.shortcuts import render, redirect
 
 # Create your views here.
 def home(request):
@@ -9,3 +10,7 @@ def home(request):
     if request.user.email:
         return render(request, 'discovery/rate.html')
     return render(request, 'auth_disco/provide_email.html')
+
+def logout(request):
+    lo(request)
+    return redirect('/')
