@@ -39,6 +39,12 @@ function resetRating() {
 
 resetRating();
 
+function hideAlerts() {
+    $('#allInputError').hide();
+    $('#ratingSubmitted').hide();
+    $('#errorSubmitting').hide();
+}
+
 var doiBloodhound = new Bloodhound({
     datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -128,9 +134,7 @@ function exRangeUpdated(value) {
 }
 
 function submitRating() {
-    $('#allInputError').hide();
-    $('#ratingSubmitted').hide();
-    $('#errorSubmitting').hide();
+    hideAlerts();
     if (!(dvSelected && acSelected && crSelected && exSelected)) {
         $('#allInputError').show();
         return;
