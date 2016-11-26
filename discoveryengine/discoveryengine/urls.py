@@ -26,8 +26,13 @@ urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^logout/', views.logout, name='logout'),
 
-   ########
-   # APIs #
-   ########
+    ########
+    # APPS #
+    ########
+    url(r'^internal/', include('internal.urls')),
+
+    ########
+    # APIs #
+    ########
    url(r'^api/', include('discoveryengine.api')),
 ]

@@ -87,6 +87,9 @@ INSTALLED_APPS = [
     'auth_disco',
     'discovery',
     'widget',
+    
+    # Always last
+    'internal',
 ]
 
 MIDDLEWARE = [

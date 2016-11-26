@@ -13,6 +13,9 @@ $.ajaxSetup({
         }
     }
 });
+/*******************
+***** END SETUP ****
+*******************/
 
 var rating = {};
 var dvSelected = false;
