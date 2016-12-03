@@ -1,8 +1,10 @@
+'use strict';
+
 console.log('loaded bmlet.js');
 
 let doi;
 
-document.getElementsByTagName('meta').forEach( metaTag => {
+Array.from(document.getElementsByTagName('meta')).forEach( metaTag => {
   const name = metaTag.getAttribute('name');
   if (name === 'citation_doi' || 'prism_doi') {
     console.log('found citation_doi metatag');
@@ -13,7 +15,7 @@ document.getElementsByTagName('meta').forEach( metaTag => {
 
 if (!doi) {
   // pubmed
-  document.getElementsByTagName('dd').forEach( ddTag => {
+  Array.from(document.getElementsByTagName('dd')).forEach( ddTag => {
     const doiTag = ddTag.child('a');
     if (doiTag) {
       if (doiTag.getAttribute('ref') === 'aid_type=doi') {
