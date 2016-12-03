@@ -29,5 +29,5 @@ if (!doi) {
 
 console.log('this is updating!');
 
-const url = 'rate.thediscoverengine.org' + '?doi=' + doi;
+const url = 'http://rate.thediscoverengine.org' + '?doi=' + doi;
 window.open(url);
