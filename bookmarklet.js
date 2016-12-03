@@ -5,8 +5,8 @@ console.log('loaded bmlet.js');
 let doi;
 
 Array.from(document.getElementsByTagName('meta')).forEach( metaTag => {
-  const name = metaTag.getAttribute('name');
-  if (name === 'citation_doi' || 'prism_doi') {
+  let name = metaTag.getAttribute('name');
+  if (name === ('citation_doi' || 'prism_doi')) {
     console.log('found citation_doi metatag');
     doi = metaTag.getAttribute('content');
     console.log(doi);
@@ -16,7 +16,7 @@ Array.from(document.getElementsByTagName('meta')).forEach( metaTag => {
 if (!doi) {
   // pubmed
   Array.from(document.getElementsByTagName('dd')).forEach( ddTag => {
-    const doiTag = ddTag.child('a');
+    let doiTag = ddTag.child('a');
     if (doiTag) {
       if (doiTag.getAttribute('ref') === 'aid_type=doi') {
         doi = doiTag.getAttribute('href');
@@ -29,5 +29,5 @@ if (!doi) {
 
 console.log('this is updating!');
 
-const url = 'http://rate.thediscoverengine.org' + '?doi=' + doi;
+let url = 'http://rate.thediscoveryengine.org' + '?doi=' + doi;
 window.open(url);
