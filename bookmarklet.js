@@ -3,18 +3,26 @@
 console.log('loaded bookmarklet');
 
 let doi;
+const possibleDoiTagNames = {
+  'citation_doi': true,
+  'prism_doi': true,
+  'dc.identifier.doi': true,
+  'bepress_citation_doi': true,
+  'ppl.doi': true,
+  'doi': true
+};
+
 
 Array.from(document.getElementsByTagName('meta')).forEach( metaTag => {
-  let name = metaTag.getAttribute('name');
-  if (name === ('citation_doi' || 'prism_doi')) {
+  let tagName = metaTag.getAttribute('name');
+  if (possibleDoiTagNames[tagName]) {
     doi = metaTag.getAttribute('content');
-    console.log('found doi metatag:');
-    console.log(doi);
   }
 });
 
 if (!doi) {
-  // pubmed
+  // can flesh this section out with any specific sites that don't store doi metatags
+  // just implementing for pubmed for now
   Array.from(document.getElementsByTagName('dd')).forEach( ddTag => {
     let doiTag = ddTag.child('a');
     if (doiTag) {
