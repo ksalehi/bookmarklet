@@ -23,16 +23,14 @@ Array.from(document.getElementsByTagName('meta')).forEach( metaTag => {
 if (!doi) {
   // can flesh this section out with any specific sites that don't store doi metatags
   // just implementing for pubmed for now
-  Array.from(document.getElementsByTagName('dd')).forEach( ddTag => {
-    let doiTag = ddTag.child('a');
-    if (doiTag) {
-      if (doiTag.getAttribute('ref') === 'aid_type=doi') {
-        doi = doiTag.getAttribute('href');
-        console.log('found pubmed doi:');
-        console.log(doi);
-      }
-    }
-  });
+  if (window.location.hostname === 'www.ncbi.nlm.nih.gov') {
+    const ddTags = document.getElementsByTagName('dd');
+    doi = ddTags[1].childNodes[0].innerText;
+    console.log('pubmed doi:');
+    console.log(doi);
+  } else {
+    doi = 'DOI_NOT_FOUND';
+  }
 }
 
 let url = 'http://rate.thediscoveryengine.org' + '?doi=' + doi;
