@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block additional_headers %}
+{% load static %}
+<link href="{% static "discovery/css/styles.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="login-container background-primary-dark text-white">
+    <div class="container text-center">
+        <h1 style="font-size: 10rem;"><span style="font-weight: 900;">Disco?</span> Very.</h1>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h1>Specific, real time, and democratic assessment of science does a lot of good, so thanks for doing good!</h1>
+                <!-- <div class="row">
+                    <div class="col-md-4">
+                        <a class="lead" href="#">How do I give ratings?</a>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="lead" href="#">Info about the questions we ask</a>
+                    </div>
+                    <div class="col-md-4">
+                        <a class="lead" href="#">How am I helping science/scientists?</a>
+                    </div>
+                </div> -->
+                <br />
+                {% if IS_PRODUCTION %}
+                <a class="btn btn-round btn-lg btn-success" href="{% url "social:begin" "orcid-member" %}?next={{ request.path }}">LOGIN WITH ORCID</a>
+                {% else %}
+                <a class="btn btn-round btn-lg btn-success" href="{% url "social:begin" "orcid-sandbox-member" %}?next={{ request.path }}">LOGIN WITH ORCID</a>
+                {% endif %}
+                <a href="mailto:feedback@thediscoveryengine.org" class="btn btn-round btn-lg btn-danger">Feedback?</a>
+            </div>
+        </div>
+    </div> <!-- /container -->
+</div>
+{% endblock %}

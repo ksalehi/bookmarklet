@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+
+{% block additional_headers %}
+{% load static %}
+<link href="{% static "discovery/css/styles.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form action="#" onsubmit="searchByDOI(); return false;">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="doi-addon">DOI:</span>
+                        <input id="doi" class="form-control" type="text" name="doi" placeholder="example: 10.3389/fnsys.2013.00008" aria-describedby="doiHelpBlock" />
+                        <span class="input-group-btn">
+                            <button id="searchButton" class="btn btn-primary" onclick="searchByDOI()" type="button">Search</button>
+                        </span>
+                    </div>
+                    <span id="doiHelpBlock" class="help-block">Use the DOI to search for the paper you would like to rate.</span>
+                </div>
+            </form>
+            <hr />
+            <h2 class="text-info">Feedback?</h2>
+            <p>We'd love to hear your thoughts on the Discovery Engine! So if you have any suggestions or feedback, or if you just want to tell us how awesome this is, drop us a line!</p>
+            <a class="btn btn-info btn-block btn-round" href="mailto:feedback@thediscoveryengine.org">Submit Feedback</a>
+        </div>
+        <div id="rate" class="col-md-6" style="visibility: hidden;">
+            <div class="panel text-white background-primary">
+                <div class="panel-body">
+                    <p class="lead" id="article-title"></p>
+                    <p id="article-authors"></p>
+                </div>
+            </div>
+            <div id="inputs">
+                <div class="form-group panel background-default">
+                    <div class="panel-body">
+                        <label for="dv-slider">Discovery Value</label>
+                        <span id="dvHelp" class="help-block">How much could the conclusions and/or findings of this paper change your view(s) if proven true? (see question 3 below for a rating of certitude)</span>
+                        <input id="dv-slider" class="form-control" type="range" name="dv-slider" min=0 max=500 aria-describedby="dvHelp" oninput="dvRangeUpdated()" onchange="dvRangeUpdated()" />
+                        <table width="100%" style="table-layout: fixed;">
+                            <tbody>
+                                <tr>
+                                    <td class="text-right">Less than average</td>
+                                    <td class="text-center">Typical</td>
+                                    <td class="text-right">Best Ever</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="form-group panel background-default">
+                    <div class="panel-body">
+                        <label for="ac-slider">Actionability</label>
+                        <span id="acHelp" class="help-block">How much will this paper change practice in the field?</span>
+                        <input id="ac-slider" class="form-control" type="range" name="ac-slider" min=0 max=500 aria-describedby="acHelp" oninput="acRangeUpdated(value)" onchange="acRangeUpdated(value)" />
+                        <table width="100%" style="table-layout: fixed;">
+                            <tbody>
+                                <tr>
+                                    <td class="text-right">Less than average</td>
+                                    <td class="text-center">Typical</td>
+                                    <td class="text-right">Best Ever</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="form-group panel background-default">
+                    <div class="panel-body">
+                        <label for="cr-slider">Concreteness</label>
+                        <span id="crHelp" class="help-block">How well proven is the finding you rated for Discovery Value?</span>
+                        <input id="cr-slider" class="form-control" type="range" name="cr-slider" min=0 max=500 aria-describedby="crHelp" oninput="crRangeUpdated(value)" onchange="crRangeUpdated(value)" />
+                        <table width="100%" style="table-layout: fixed;">
+                            <tbody>
+                                <tr>
+                                    <td class="text-right">Less than average</td>
+                                    <td class="text-center">Typical</td>
+                                    <td class="text-right">Best Ever</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="form-group panel background-default">
+                    <div class="panel-body">
+                        <label for="ex-slider">Expertise</label>
+                        <span id="exHelp" class="help-block">How familiar are you with the topic area of this paper?</span>
+                        <input id="ex-slider" class="form-control" type="range" name="ex-slider" min=0 max=500 aria-describedby="exHelp" oninput="exRangeUpdated(value)" onchange="exRangeUpdated(value)" />
+                        <table width="100%" style="table-layout: fixed;">
+                            <tbody>
+                                <tr>
+                                    <td class="text-left">Novice</td>
+                                    <td class="text-right">Expert</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="allInputError" class="alert alert-danger" style="display: none;">
+                    <p class="lead">Please select a value for all the questions.</p>
+                </div>
+                <div id="ratingSubmitted" class="alert alert-success" style="display: none;">
+                    <p class="lead">Success! To update your rating, just change the sliders and submit again.</p>
+                </div>
+                <div id="errorSubmitting" class="alert alert-danger" style="display: none;">
+                    <p class="lead">There was an error processing your request.</p>
+                </div>
+                <button class="btn btn-danger btn-block" onclick="submitRating()">Submit Rating</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block before_closing_body %}
+{% load static %}
+<script src="{% static "js/vendor/typeahead.bundle.min.js" %}"></script>
+<script src="{% static "js/vendor/handlebars.min.js" %}"></script>
+<script src="{% static "js/vendor/moment.min.js" %}"></script>
+<script src="{% static "js/vendor/js.cookie.js" %}"></script>
+<script src="{% static "discovery/js/doi.typeahead.js" %}"></script>
+{% endblock %}

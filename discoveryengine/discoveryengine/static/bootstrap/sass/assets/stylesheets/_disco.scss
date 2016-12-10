@@ -1,0 +1,38 @@
+/*!
+ * The Discovery Engine (http://thediscoveryengine.org)
+ * Copyright 2016 The Discovery Engine
+ */
+
+//
+// Load core variables
+// --------------------------------------------------
+
+@import "bootstrap/variables";
+
+
+//
+// Backgrounds
+// --------------------------------------------------
+
+// Common styles
+.background-default {
+    background-color: #F1F4F6;
+}
+.background-primary {
+    background-color: $brand-primary;
+}
+.background-success {
+    background-color: $brand-success;
+}
+.background-info {
+    background-color: $brand-info;
+}
+.background-warning {
+    background-color: $brand-warning;
+}
+.background-danger {
+    background-color: $brand-danger;
+}
+.background-primary-dark {
+    background-color: $brand-primary-dark;
+}
