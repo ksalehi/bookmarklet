@@ -2,7 +2,7 @@
 
 console.log('Welcome to the Discovery Engine via the amazing bookmarklet! Please email feedback@thediscoveryengine.org with any suggestions!');
 
-function perform() {
+function DE_BOOKMARKLET_perform() {
   let doi;
   const possibleDoiTagNames = {
     'citation_doi': true,
@@ -36,26 +36,32 @@ function perform() {
   let url = 'http://rate.thediscoveryengine.org' + '?doi=' + doi;
   var result = window.open(url);
   if (result === undefined) {
-    showPopupMessage(doi);
+    DE_BOOKMARKLET_showPopupMessage(doi);
   }
 }
 
-function showPopupMessage(doi) {
+function DE_BOOKMARKLET_showPopupMessage(doi) {
   let template = ' \
-    <div id="deBookmarkletPopupBlocker" style="position: absolute; top: 0; right: 0; left: 0; background: #FF3366; color: white; text-align: center; padding: 10px;"> \
-      <img src="http://rate.thediscoveryengine.org/static/img/favicon.png" /> \
-      <span>Please disable your popup blocker for the bookmarklet to work. Click <a href="http://rate.thediscoveryengine.org/?doi='+doi+'" target="_blank">here</a> to rate this paper.</span> \
+    <div id="deBookmarkletPopupBlocker" style="position: absolute; top: 0; right: 0; left: 0; background: #FF3366; color: white; text-align: center; padding: 10px; z-index: 1001;"> \
+      <img src="http://rate.thediscoveryengine.org/static/img/logo_white.png" style="width: 24px;" /> \
+      <span>Please disable your popup blocker for the bookmarklet to work. Click <a href="http://rate.thediscoveryengine.org/?doi='+doi+'" target="_blank" style="color: #163158; font-weight: bold; text-decoration: underline;">here</a> to rate this paper.</span> \
+      <small><a href="#" onclick="DE_BOOKMARKLET_closePopup()" style="color: #163158">Close</a></small> \
     </div> \
   '
 
-  var container = document.createElement('div');
-  container.innerHTML = template;
-  var popupMessage = container.firstChild
-  document.getElementsByTagName('body')[0].appendChild(popupMessage);
+  if (document.getElementById('deBookmarkletPopupBlocker')) {
+    document.getElementById('deBookmarkletPopupBlocker').style.display = 'block';
+  } else {
+    var container = document.createElement('div');
+    container.innerHTML = template;
+    document.getElementsByTagName('body')[0].appendChild(container);
+  }
 
-  setTimeout(function() {
-    popupMessage.style.display = 'none';
-  }, 10000);
+  setTimeout(DE_BOOKMARKLET_closePopup, 10000);
 }
 
-perform();
+function DE_BOOKMARKLET_closePopup() {
+  document.getElementById('deBookmarkletPopupBlocker').style.display = 'none';
+}
+
+DE_BOOKMARKLET_perform();
