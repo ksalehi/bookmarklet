@@ -13,7 +13,6 @@ function perform() {
     'doi': true
   };
 
-
   Array.from(document.getElementsByTagName('meta')).forEach( metaTag => {
     let tagName = metaTag.getAttribute('name');
     if (possibleDoiTagNames[tagName]) {
@@ -35,7 +34,28 @@ function perform() {
 
   console.log(doi);
   let url = 'http://rate.thediscoveryengine.org' + '?doi=' + doi;
-  window.open(url);
+  var result = window.open(url);
+  if (result === undefined) {
+    showPopupMessage(doi);
+  }
+}
+
+function showPopupMessage(doi) {
+  let template = ' \
+    <div id="deBookmarkletPopupBlocker" style="position: absolute; top: 0; right: 0; left: 0; background: #FF3366; color: white; text-align: center; padding: 10px;"> \
+      <img src="http://rate.thediscoveryengine.org/static/img/favicon.png" /> \
+      <span>Please disable your popup blocker for the bookmarklet to work. Click <a href="http://rate.thediscoveryengine.org/?doi='+doi+'" target="_blank">here</a> to rate this paper.</span> \
+    </div> \
+  '
+
+  var container = document.createElement('div');
+  container.innerHTML = template;
+  var popupMessage = container.firstChild
+  document.getElementsByTagName('body')[0].appendChild(popupMessage);
+
+  setTimeout(function() {
+    popupMessage.style.display = 'none';
+  }, 10000);
 }
 
 perform();
