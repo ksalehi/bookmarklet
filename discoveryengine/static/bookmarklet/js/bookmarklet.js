@@ -25,15 +25,15 @@ function perform() {
     /*** CUSTOM SITE PARSERS ***/
     // PubMed
     if (window.location.hostname === 'www.ncbi.nlm.nih.gov') {
+      console.log('PubMed custom parser');
       const ddTags = document.getElementsByTagName('dd');
       doi = ddTags[1].childNodes[0].innerText;
-      console.log('pubmed doi:');
-      console.log(doi);
     } else {
       doi = 'DOI_NOT_FOUND';
     }
   }
 
+  console.log(doi);
   let url = 'http://rate.thediscoveryengine.org' + '?doi=' + doi;
   window.open(url);
 }
