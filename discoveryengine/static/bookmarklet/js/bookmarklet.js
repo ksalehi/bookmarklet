@@ -1,6 +1,6 @@
 'use strict';
 
-console.log('loaded bookmarklet');
+console.log('Welcome to the Discovery Engine via the amazing bookmarklet! Please email feedback@thediscoveryengine.org with any suggestions!');
 
 let doi;
 const possibleDoiTagNames = {
