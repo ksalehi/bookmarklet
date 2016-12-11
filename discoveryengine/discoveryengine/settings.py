@@ -84,10 +84,10 @@ INSTALLED_APPS = [
     'social.apps.django_app.default',
     'rest_framework',
     'discoveryengine',
-    'auth_disco',
-    'discovery',
     'widget',
     'bookmarklet',
+    'auth_disco',
+    'discovery',
     # Always last
     'internal',
 ]
