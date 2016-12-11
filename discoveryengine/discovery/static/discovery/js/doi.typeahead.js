@@ -86,6 +86,16 @@ function loading(isLoading) {
     $('#searchButton').attr('disabled', isLoading);
 }
 
+// GET DOI FROM QUERY PARAM
+function doiFromQuery() {
+    var doi = (location.search.match(new RegExp('doi' + "=(.*?)($|\&)", "i")) || [])[1]
+    if (doi != undefined) {
+        $('#doi').val(doi);
+        searchByDOI();
+    }
+}
+doiFromQuery();
+
 function searchByDOI() {
     loading(true);
     var doi = $('#doi').val();

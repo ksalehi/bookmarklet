@@ -4,8 +4,10 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 def home(request):
-    if request.user.is_anonymous():
-        context = {'IS_PRODUCTION': settings.IS_PRODUCTION}
+    if request.user.is_anonymous():    
+        context = {'IS_PRODUCTION': settings.IS_PRODUCTION, 'next': '/'}
+        if request.GET:
+            context['next'] = context['next']+'?'+request.GET.urlencode()
         return render(request, 'discovery/index.html', context=context)
     if request.user.email:
         return render(request, 'discovery/rate.html')
