@@ -87,7 +87,7 @@ INSTALLED_APPS = [
     'auth_disco',
     'discovery',
     'widget',
-    
+    'bookmarklet',
     # Always last
     'internal',
 ]
