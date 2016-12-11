@@ -103,7 +103,7 @@ function searchByDOI() {
         loading(false);
         return;
     }
-    resetRating();
+    history.pushState(null, '', '/?doi='+doi);
     function sync(results) {
         return;
     }
