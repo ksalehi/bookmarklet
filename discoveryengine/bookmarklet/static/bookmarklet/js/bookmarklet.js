@@ -21,8 +21,8 @@ Array.from(document.getElementsByTagName('meta')).forEach( metaTag => {
 });
 
 if (!doi) {
-  // can flesh this section out with any specific sites that don't store doi metatags
-  // just implementing for pubmed for now
+  /*** CUSTOM SITE PARSERS ***/
+  // PubMed
   if (window.location.hostname === 'www.ncbi.nlm.nih.gov') {
     const ddTags = document.getElementsByTagName('dd');
     doi = ddTags[1].childNodes[0].innerText;
