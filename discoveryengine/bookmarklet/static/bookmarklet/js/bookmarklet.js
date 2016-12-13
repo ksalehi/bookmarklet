@@ -1,5 +1,5 @@
 'use strict';
-
+console.log('bookmarklet is working');
 console.log('Welcome to the Discovery Engine via the amazing bookmarklet! Please email feedback@thediscoveryengine.org with any suggestions!');
 
 function DE_BOOKMARKLET_perform() {
