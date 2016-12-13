@@ -26,7 +26,15 @@ function DE_BOOKMARKLET_perform() {
     if (window.location.hostname === 'www.ncbi.nlm.nih.gov') {
       console.log('PubMed custom parser');
       const ddTags = document.getElementsByTagName('dd');
-      doi = ddTags[1].childNodes[0].innerText;
+      if (ddTags[1]) {
+        const aTag = ddTags[1].childNodes[0];
+        if (aTag) {
+          doi = aTag.innerText;
+        }
+      }
+      if (!doi) {
+        doi = 'DOI_NOT_FOUND';
+      }
     } else {
       doi = 'DOI_NOT_FOUND';
     }
@@ -47,7 +55,7 @@ function DE_BOOKMARKLET_showPopupMessage(doi) {
       <span style="margin-right: 5px;">Please disable your popup blocker for the bookmarklet to work. Click <a href="http://rate.thediscoveryengine.org/?doi='+doi+'" target="_blank" style="color: #163158; font-weight: bold; text-decoration: underline;">here</a> to rate this paper.</span> \
       <small><a href="#" onclick="DE_BOOKMARKLET_closePopup()" style="color: #163158">Close</a></small> \
     </div> \
-  '
+  ';
 
   if (document.getElementById('deBookmarkletPopupBlocker')) {
     document.getElementById('deBookmarkletPopupBlocker').style.display = 'flex';
