@@ -29,7 +29,7 @@ function DE_BOOKMARKLET_perform() {
       const ddTags = document.getElementsByTagName('dd');
       let doiTagIndex;
 
-      dtTags.foreach( (index, dtTag) => {
+      Array.from(dtTags).forEach( (dtTag, index) => {
         if (dtTag.innerText === 'DOI:') {
           doiTagIndex = index;
         }
