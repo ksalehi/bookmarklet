@@ -25,9 +25,18 @@ function DE_BOOKMARKLET_perform() {
     // PubMed
     if (window.location.hostname === 'www.ncbi.nlm.nih.gov') {
       console.log('PubMed custom parser');
+      const dtTags = document.getElementsByTagName('dt');
       const ddTags = document.getElementsByTagName('dd');
-      if (ddTags[2]) {
-        const aTag = ddTags[2].childNodes[0];
+      let doiTagIndex;
+
+      dtTags.foreach( (index, dtTag) => {
+        if (dtTag.innerText === 'DOI:') {
+          doiTagIndex = index;
+        }
+      });
+
+      if (ddTags[doiTagIndex]) {
+        const aTag = ddTags[doiTagIndex].childNodes[0];
         if (aTag) {
           doi = aTag.innerText;
         }
