@@ -44,7 +44,7 @@ function DE_BOOKMARKLET_showPopupMessage(doi) {
   let template = ' \
     <div id="deBookmarkletPopupBlocker" style="position: fixed; top: 0; right: 0; left: 0; background: #FF3366; color: white; text-align: center; padding: 10px; z-index: 1001; display: flex; flex-direction: horizontal; align-items: center; justify-content: center;"> \
       <img src="http://rate.thediscoveryengine.org/static/img/logo_white.png" style="width: 24px; margin-right: 5px;" /> \
-      <span style="margin-right: 5px;">Please disable your popup blocker for the bookmarklet to work. Click <a href="http://rate.thediscoveryengine.org/?doi='+doi+'" target="_blank" style="color: #163158; font-weight: bold; text-decoration: underline;">here</a> to rate this paper.</span> \
+      <span style="margin-right: 5px;">Please disable your popup blocker and refresh the page for the bookmarklet to work. Click <a href="http://rate.thediscoveryengine.org/?doi='+doi+'" target="_blank" style="color: #163158; font-weight: bold; text-decoration: underline;">here</a> to rate this paper.</span> \
       <small><a href="#" onclick="DE_BOOKMARKLET_closePopup()" style="color: #163158">Close</a></small> \
     </div> \
   '

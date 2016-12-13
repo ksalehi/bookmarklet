@@ -77,7 +77,7 @@ function searchByDOI() {
             $('#rate').css('visibility', 'visible');
         } else {
             $('#article-title').text("Could not locate document");
-            $('#article-authors').text("Please try again");
+            $('#article-authors').text("Please try again or enter the DOI manually");
             $('#inputs').css('visibility', 'hidden');
             $('#rate').css('visibility', 'visible');
         }
