@@ -26,8 +26,8 @@ function DE_BOOKMARKLET_perform() {
     if (window.location.hostname === 'www.ncbi.nlm.nih.gov') {
       console.log('PubMed custom parser');
       const ddTags = document.getElementsByTagName('dd');
-      if (ddTags[1]) {
-        const aTag = ddTags[1].childNodes[0];
+      if (ddTags[2]) {
+        const aTag = ddTags[2].childNodes[0];
         if (aTag) {
           doi = aTag.innerText;
         }
